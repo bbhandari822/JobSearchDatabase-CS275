@@ -53,6 +53,21 @@
       });
     }
 
+	function findCompany(){
+		var URL ="http://localhost:8080/findCompany";
+      $.ajax({
+        type: "GET",
+        url: URL,
+        dataType: "html",
+        success: function(msg) {
+					//still need to implement
+					
+
+
+        }
+      });
+	}
+
   </script>
 
 	
@@ -74,9 +89,12 @@
 <!-- Creating a panel -->
 	<div data-role="panel" id="panel">
 		<a onclick="mainPage()" data-rel="close" class="ui-alt-icon ui-btn ui-shadow ui-corner-all ui-icon-home ui-btn-icon-left">Home</a>
-		<a onclick="findCompany()" data-rel="close" class="ui-alt-icon ui-btn ui-shadow ui-corner-all ui-icon-grid ui-btn-icon-left">Company Search</a>
+		<a class="ui-btn ui-icon-info ui-btn-icon-left" onclick="findCompany()">Company Search</a>
+		<a onclick="addReviews()" data-rel="close" class="ui-alt-icon ui-btn ui-shadow ui-corner-all ui-icon-grid ui-btn-icon-left">Add Reviews</a>
+		<a onclick="jobLisiting()" data-rel="close" class="ui-alt-icon ui-btn ui-shadow ui-corner-all ui-icon-grid ui-btn-icon-left">Job Listing</a>
 		<a data-rel="close" class="ui-alt-icon ui-btn ui-shadow ui-corner-all ui-icon-delete ui-btn-icon-left">Close Menu</a>
 	</div>
+	
 	<div data-role="button" id="signout"></div>
 
 	<div data-role="header" id="header">

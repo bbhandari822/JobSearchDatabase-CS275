@@ -73,3 +73,20 @@ app.get('/login', function(req, res) {
 			};
 		});
 });
+	app.get('/findCompany', function(req,res) {
+		var html = "";
+		var companyId =req.query.companyId;
+		con.query('select * from COMPANY where companyId="'+companyId+'";',
+		function(err,rows,fields) {
+			if (err){
+				res.send("error:please reload");
+			}
+			else{
+
+				//need to implement
+
+			};
+		});
+
+	});
+	
