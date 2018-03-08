@@ -84,7 +84,7 @@ app.get('/displayComapany', function(req,res) {
 				res.send("error:please reload");
 			}
 			else{
-				var str = "<table border=\"1\" style=\"font-family: Trebuchet MS, Arial, Helvetica, sans-serif; border: 1px solid #000; border-collapse: collapse; : 100%; width: auto; padding-top: 12px; text-align: center; margin-bottom: 14px;\"><tr><td>Company Name</td><td>Company Location</td><td>companyRating</td></tr>"
+				var str = "<table border=\"1\" style=\"font-family: Trebuchet MS, Arial, Helvetica, sans-serif; border: 1px solid #000; border-collapse: collapse; : 100%; width: auto; padding-top: 12px; text-align: center; margin-bottom: 14px;\"><tr><td>Company Name</td><td>Company Location</td><td>Company Rating</td></tr>"
 				for (var i = 0; i < rows.length; i++) {
 					str = str + "<tr><td>" + rows[i].companyName + "</td><td>" + rows[i].companyLocation + "</td><td>" + rows[i].companyRating + "</td></tr>";
 				};
