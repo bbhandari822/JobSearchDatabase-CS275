@@ -38,13 +38,29 @@ INSERT INTO `USER` VALUES ('14169635','Bhandari','Binod','password','bb822@drexe
 /*!40000 ALTER TABLE `USER` ENABLE KEYS */;
 UNLOCK TABLES;
 
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
-/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+
+DROP TABLE IF EXISTS `COMPANY`;
+/*!40101 SET character_set_client = utf8 */;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+CREATE TABLE `COMPANY` (
+  `companyID` int NOT NULL AUTO_INCREMENT,
+  `companyName` varchar(20) DEFAULT NULL,
+  `companyLocation` varchar(20) DEFAULT NULL,
+  `companyRating` decimal(4) DEFAULT NULL,
+  PRIMARY KEY (`companyID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- table `COMPANY`: dumping data for the table
+--
+
+LOCK TABLES `COMPANY` WRITE;
+/*!40000 ALTER TABLE `COMPANY` DISABLE KEYS */;
+INSERT INTO `COMPANY` VALUES (1,'Google','California',4.3),(2,'SIG','Philadelphia', 3.8);
+/*!40000 ALTER TABLE `COMPANY` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
 
 -- Dump completed on 2018-03-04 

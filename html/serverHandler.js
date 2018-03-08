@@ -73,20 +73,27 @@ app.get('/login', function(req, res) {
 			};
 		});
 });
-	app.get('/findCompany', function(req,res) {
-		var html = "";
-		var companyId =req.query.companyId;
-		con.query('select * from COMPANY where companyId="'+companyId+'";',
+
+
+
+app.get('/displayComapany', function(req,res) {
+	con.query('select companyName, companyLocation, companyRating from COMPANY;',
 		function(err,rows,fields) {
 			if (err){
+				console.log(err);
 				res.send("error:please reload");
 			}
 			else{
-
-				//need to implement
-
+				var str = "<table border=\"1\" style=\"font-family: Trebuchet MS, Arial, Helvetica, sans-serif; border: 1px solid #000; border-collapse: collapse; : 100%; width: auto; padding-top: 12px; text-align: center; margin-bottom: 14px;\"><tr><td>Company Name</td><td>Company Location</td><td>companyRating</td></tr>"
+				for (var i = 0; i < rows.length; i++) {
+					str = str + "<tr><td>" + rows[i].companyName + "</td><td>" + rows[i].companyLocation + "</td><td>" + rows[i].companyRating + "</td></tr>";
+				};
+				str = str + "</table>";
+				console.log(str);
+				res.send(str);
 			};
 		});
 
-	});
+});
+
 	

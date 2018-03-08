@@ -9,7 +9,7 @@
 	<script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
 	<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 	<script>
-	var currentUser ='';
+	var currentUser =false;
 	var userRole = '';
 	var userId = '';
     function loginCheck(){
@@ -28,7 +28,8 @@
         success: function(msg) {
           var info = msg;
           if(info == "Incorrect Password/Email"){
-            alert(info);
+						alert(info);
+						currentUser=Email;
           }
           else{
             currentUser = Email;
@@ -41,31 +42,43 @@
 
 
     function mainPage(){
-      var URL ="http://localhost:8080/loadMain";
-      $.ajax({
-        type: "GET",
-        url: URL,
-        dataType: "html",
-        success: function(msg) {
-          document.getElementById("main").innerHTML = msg;
-          document.getElementById("headVal").innerHTML = '<h1>Home</h1>';
-        }
-      });
-    }
-
-	function findCompany(){
-		var URL ="http://localhost:8080/findCompany";
-      $.ajax({
-        type: "GET",
-        url: URL,
-        dataType: "html",
-        success: function(msg) {
-					//still need to implement
-					
-
-
-        }
-      });
+			if(currentUser){
+				var URL ="http://localhost:8080/loadMain";
+				$.ajax({
+					type: "GET",
+					url: URL,
+					dataType: "html",
+					success: function(msg) {
+						document.getElementById("main").innerHTML = msg;
+						document.getElementById("headVal").innerHTML = '<h1>Home</h1>';
+					}
+				});
+			}
+			else{
+				alert("Please login")
+			}
+	}
+	
+		function displayCompany(){//for display table
+			if(currentUser){
+				var URL ="http://localhost:8080/displayComapany";
+				params = {
+				};
+				$.ajax({
+					type: "GET",
+					url: URL,
+					dataType: "html",
+					data: params,
+					success: function(msg) {
+						document.getElementById("main").innerHTML = msg;
+					},
+					error : function(jgXHR, textStatus, errorThrown){
+						$("#displayComp").html("Error:" + textStatus + " " + errorThrown);
+					}
+				});
+			}else{
+				alert("Please login")
+			}
 	}
 
   </script>
@@ -89,7 +102,7 @@
 <!-- Creating a panel -->
 	<div data-role="panel" id="panel">
 		<a onclick="mainPage()" data-rel="close" class="ui-alt-icon ui-btn ui-shadow ui-corner-all ui-icon-home ui-btn-icon-left">Home</a>
-		<a class="ui-btn ui-icon-info ui-btn-icon-left" onclick="findCompany()">Company Search</a>
+		<a onclick="displayCompany()" data-rel="close" class="ui-alt-icon ui-btn ui-shadow ui-corner-all ui-icon-grid ui-btn-icon-left">Comapny Listing</a>
 		<a onclick="addReviews()" data-rel="close" class="ui-alt-icon ui-btn ui-shadow ui-corner-all ui-icon-grid ui-btn-icon-left">Add Reviews</a>
 		<a onclick="jobLisiting()" data-rel="close" class="ui-alt-icon ui-btn ui-shadow ui-corner-all ui-icon-grid ui-btn-icon-left">Job Listing</a>
 		<a data-rel="close" class="ui-alt-icon ui-btn ui-shadow ui-corner-all ui-icon-delete ui-btn-icon-left">Close Menu</a>
@@ -123,6 +136,8 @@
 	</div>		
 </div>
 </body>
+
+<div id="displayComp"></div>
 
 </html>
 
