@@ -54,13 +54,22 @@
                         }
                     });
 			    }else{
-				    alert("Please Login!")
+                    alert("Please Login!");
+                    var URL ="http://localhost:8080";
+                    $.ajax({
+                        type: "GET",
+                        url: URL,
+                        dataType: "html",
+                        success: function(msg) {
+                            document.getElementById("main").innerHTML = msg;
+                            document.getElementById("headVal").innerHTML = '<h1>Home</h1>';
+                        }
+                    });
 			    }
 	        }
 
             function displayCompany(){//for display table
 			    if(currentUser){
-
                     var URL ="http://localhost:8080/displayComapany";
                     params = {};
                     $.ajax({
@@ -72,13 +81,34 @@
                             document.getElementById("main").innerHTML = msg;
                         },
                         error : function(jgXHR, textStatus, errorThrown){
-                            $("#displayComp").html("Error:" + textStatus + " " + errorThrown);
+                            $("#main").html("Error:" + textStatus + " " + errorThrown);
                         }
                     });
                 }else{
-                    alert("Please Login!")
+                    alert("Please Login!");
                 }
-	        }
+            }
+
+
+            function toRender(){
+                var URL = "http://localhost:8080/comp_rend"
+                $.ajax({
+                    type: "GET",
+                    url: URL,
+                    dataType: "html",
+                    success : function(msg){
+                        $("#main").html(msg);
+                        // var _main = document.getElementById('main');
+                        // eval(_main);
+                    },
+                    error : function(jgXHR, textStatus, errorThrown){
+                        alert("Fail")
+                        $("#result").html("Error:" + textStatus + " " + errorThrown);
+                    }
+                });
+
+            }
+
         </script>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -98,16 +128,14 @@
             <div data-role="panel" id="panel">
                 <a onclick="mainPage()" data-rel="close" class="ui-alt-icon ui-btn ui-shadow ui-corner-all ui-icon-home ui-btn-icon-left">Home</a>
                 <a onclick="displayCompany()" data-rel="close" class="ui-alt-icon ui-btn ui-shadow ui-corner-all ui-icon-grid ui-btn-icon-left">Comapny Listing</a>
-                <a onclick="addReviews()" data-rel="close" class="ui-alt-icon ui-btn ui-shadow ui-corner-all ui-icon-grid ui-btn-icon-left">Add Reviews</a>
+                <a onclick="toRender()" data-rel="close" class="ui-alt-icon ui-btn ui-shadow ui-corner-all ui-icon-grid ui-btn-icon-left">Add Company</a>
                 <a onclick="jobLisiting()" data-rel="close" class="ui-alt-icon ui-btn ui-shadow ui-corner-all ui-icon-grid ui-btn-icon-left">Job Listing</a>
                 <a data-rel="close" class="ui-alt-icon ui-btn ui-shadow ui-corner-all ui-icon-delete ui-btn-icon-left">Close Menu</a>
             </div>
 
-            <div data-role="button" id="signout"></div>
-            
             <div data-role="header" id="header">
                 <a href="#panel">Menu</a>
-                <a href="#signout" id="signoutButton">Sign Out</a>
+                <button onclick="window.location.href = 'http://localhost:8080' ">Sign Out</button>
                 <h1 id="headVal">Home</h1>
             </div>
 
@@ -131,7 +159,4 @@
                 <h1>Drexel University</h1></div>		
         </div>
     </body>
-
-    <div id="displayComp"></div>
-
 </html>

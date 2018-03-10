@@ -1,0 +1,79 @@
+<html>
+    <head>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <link type="text/css" rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <script>
+        
+        function AddNewCompany(){
+            var companyName = $("#companyName").val();
+            var companyLocation = $("#companyLocation").val();
+            var companyRating = $("#companyRating").val();
+            var companyReview = $("#companyReview").val();
+            var companyAddedDate = $("#companyAddedDate").val();
+
+            if (companyName == "" || companyLocation == "" || companyRating =="" || companyReview=="" ||companyAddedDate == "" ){
+                alert("Please fill all the information");
+                return;
+            }
+            
+            params = {
+                companyName: companyName,
+                companyLocation: companyLocation,
+                companyRating : companyRating,
+                companyReview : companyReview,
+                companyAddedDate : companyAddedDate
+            };
+
+            var URL = "http://localhost:8080/addCompany"
+
+            $.ajax({
+                type: "POST",
+                url: URL,
+                data: params,
+                dataType: "html",
+                success : function(msg){
+                    console.log("Added");
+                },
+                error : function(jgXHR, textStatus, errorThrown){
+                    alert("Fail")
+                    $("#result").html("Error:" + textStatus + " " + errorThrown);
+                }
+            });
+
+        }
+        </script>
+
+        <style type="text/css">
+            table {
+                width: 100%;
+                border: 1px solid rgba(212, 23, 23, 0.158);
+            }
+            th, td {
+                width: 50%;
+                text-align: left;
+                vertical-align: top;
+                border: 1px solid rgba(201, 47, 47, 0.158);
+                border-collapse: collapse;
+            }
+        </style>
+    </head>
+    
+    <body>
+        <form>
+            <h2>Add Company</h2>
+            <input type="text" id="companyName" placeholder="Enter Company Name"/>
+            <input type="text" id="companyLocation" placeholder="Enter Company Location"/>
+            <input type="text" id="companyRating" placeholder="Enter Company Rating"/>
+            <input type="text" id="companyReview" placeholder="Enter Company Review"/>
+            <input type="text" id="companyAddedDate" placeholder="YYYY-MM-DD"/>
+
+            <br><br>
+            <input type="button" value="Add Table" onclick = "AddNewCompany()">
+        </form>
+
+    <div id="result"></div>
+
+    </body>
+</html>

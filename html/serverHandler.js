@@ -75,25 +75,40 @@ app.get('/login', function(req, res) {
 });
 
 
-
 app.get('/displayComapany', function(req,res) {
-	con.query('select companyName, companyLocation, companyRating from COMPANY;',
+	con.query('select companyName, companyLocation, companyRating, companyReview, companyAddedDate from COMPANY;',
 		function(err,rows,fields) {
 			if (err){
 				console.log(err);
 				res.send("error:please reload");
 			}
 			else{
-				var str = "<table border=\"1\" style=\"font-family: Trebuchet MS, Arial, Helvetica, sans-serif; border: 1px solid #000; border-collapse: collapse; : 100%; width: auto; padding-top: 12px; text-align: center; margin-bottom: 14px;\"><tr><td>Company Name</td><td>Company Location</td><td>Company Rating</td></tr>"
+				var str = "<table border=\"1\" style=\"font-family: Helvetica, Arial, sans-serif; border: 1px solid #000; border-collapse: collapse; : 100%; width: auto; padding-top: 12px; text-align: center; margin-bottom: 14px;\"><tr><td>Company Name</td><td>Company Location</td><td>Company Rating </td><td>Company Reviews</td><td>Company Added Date</td></tr>"
 				for (var i = 0; i < rows.length; i++) {
-					str = str + "<tr><td>" + rows[i].companyName + "</td><td>" + rows[i].companyLocation + "</td><td>" + rows[i].companyRating + "</td></tr>";
+					str = str + "<tr><td>" + rows[i].companyName + "</td><td>" + rows[i].companyLocation + "</td><td>" + rows[i].companyRating 
+					+  "</td><td>" + rows[i].companyReview + "</td><td>" + rows[i].companyAddedDate +  "</td></tr>";
 				};
 				str = str + "</table>";
 				console.log(str);
 				res.send(str);
 			};
 		});
-
 });
+
+
+//import AddCompany modules
+var addCompanyFront = require('./addCompanyServer');
+var addC = new addCompanyFront();
+
+app.get('/comp_rend', function(req, res){
+	res.send(addC.render());
+  
+});
+
+app.post('/addCompany', function(req, res) {
+	var result = addC.addCompany(req.body);
+	res.send(result);
+});
+
 
 	

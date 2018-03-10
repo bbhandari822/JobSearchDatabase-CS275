@@ -34,7 +34,7 @@ CREATE TABLE `USER` (
 
 LOCK TABLES `USER` WRITE;
 /*!40000 ALTER TABLE `USER` DISABLE KEYS */;
-INSERT INTO `USER` VALUES ('14169635','Bhandari','Binod','password','bb822@drexel.edu');
+INSERT INTO `USER` VALUES ('14169635','Bhandari','Binod','password','bb822@drexel.edu'), ('14169634','Palvec','Chris','123','chris');
 /*!40000 ALTER TABLE `USER` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -46,7 +46,9 @@ CREATE TABLE `COMPANY` (
   `companyID` int NOT NULL AUTO_INCREMENT,
   `companyName` varchar(20) DEFAULT NULL,
   `companyLocation` varchar(20) DEFAULT NULL,
-  `companyRating` decimal(4) DEFAULT NULL,
+  `companyRating` decimal(4,1) DEFAULT NULL,
+  `companyReview` varchar(256) DEFAULT NULL,
+  `companyAddedDate` date DEFAULT NULL,
   PRIMARY KEY (`companyID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -57,7 +59,11 @@ CREATE TABLE `COMPANY` (
 
 LOCK TABLES `COMPANY` WRITE;
 /*!40000 ALTER TABLE `COMPANY` DISABLE KEYS */;
-INSERT INTO `COMPANY` VALUES (1,'Google','California',4.3),(2,'SIG','Philadelphia', 3.8);
+INSERT INTO `COMPANY` VALUES (1,'Google','California',4.3,'Google was really nice working at Google. The company environment
+was really good. Everyone was helpful.','2017-05-18' ),(2,'SIG','Philadelphia', 3.2, 'I worked mainly on legacy code which was not 
+a fun part. But I was able to learn alot and implement my knowledge from Drexel in real life implementation','2017-09-13'), (3, 'Macquarie',
+'Philadelphia', 4.1, 'Macquaire was the best!','2018-01-21'),(4,'XYZ','New York',1.0,'I hate it, do not even try to go there, Worst
+experience ever','2017-05-12');
 /*!40000 ALTER TABLE `COMPANY` ENABLE KEYS */;
 UNLOCK TABLES;
 
