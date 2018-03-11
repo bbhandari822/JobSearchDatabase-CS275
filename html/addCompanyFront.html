@@ -44,38 +44,87 @@
 
         }
         </script>
-
+        
         <style type="text/css">
-            table {
-                width: 100%;
-                border: 1px solid rgba(212, 23, 23, 0.158);
+            #tableInfo{
+                background-color:rgb(233, 229, 229);
+                padding-top:0.1%;
+                padding-left:6%;
+                size: 90%
             }
             th, td {
-                width: 50%;
+                width: 40%;
                 text-align: left;
                 vertical-align: top;
                 border: 1px solid rgba(201, 47, 47, 0.158);
                 border-collapse: collapse;
             }
+            form{
+                width:80%;
+                margin-left:10%;
+            }
+
+            #addButton{
+                border-radius: 2px;
+                margin-left: 400px;
+                size: 50%;
+                font: 15%;
+                align-content: flex-end;
+                background-color: rgb(221, 218, 211);
+            }
+
         </style>
     </head>
     
     <body>
         <form>
-            
             <center><img src="https://www.myccp.online/sites/default/files/images/Group/TransferOppertunities/drexel.png" alt="drexel logo" style="text-align: center; max-width: 60%; width: auto; height: auto;"></center>
-            <h2>Add Company</h2>
-            <input type="text" id="companyName" placeholder="Enter Company Name"/>
-            <input type="text" id="companyLocation" placeholder="Enter Company Location"/>
-            <input type="text" id="companyRating" placeholder="Enter Company Rating"/>
-            <input type="text" id="companyReview" placeholder="Enter Company Review"/>
-            <input type="text" id="companyAddedDate" placeholder="YYYY-MM-DD"/>
-
+            <tr>
+                <td>
+                    <fieldset>
+                        <legend><h2>Company Information</h2></legend>
+                        <table id = "tableInfo">
+                            <tr>
+                                <td height="40"> Company Name</td>
+                                <td>
+                                    <input type="text" id="companyName" placeholder="Enter Company Name" style = "width: 700px; height: 30px;" required>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td height="40">Company Location</td>
+                                <td>
+                                    <input type="text" id="companyLocation" placeholder="Enter Company Location" style = "width: 700px; height: 30px;" required>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td height="40"></tdheight>Comapny Rating</td>
+                                <td>
+                                    <input type="text" id="companyRating" placeholder="Enter Comapny Rating" style = "width: 700px; height: 30px;" required>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td height="40">Company Reviews</td>
+                                <td>
+                                    <input type="text" id="companyReview" placeholder="Enter Company Reviews" style = "width: 700px; height: 30px;" required>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td height="40"> Company Added Date</td>
+                                <td>
+                                    <input type="text" id="companyAddedDate" placeholder="Date: YYYY-MM-DD" style = "width: 700px; height: 30px;" required>
+                                </td>
+                            </tr>
+                        </table>
+                    </fieldset>
+                </td>
+            </tr>
             <br><br>
-            <input type="button" value="Add Table" onclick = "AddNewCompany()">
+            <tr>
+                <center>
+                <input type="button" value = "Add Company"height= "50%" style=" margin: 20px;cursor: pointer; width: 30%;" onclick="AddNewCompany()">
+                </center>
+            </tr>
         </form>
-
-    <div id="result"></div>
-
+        <div id="result"></div>
     </body>
 </html>
