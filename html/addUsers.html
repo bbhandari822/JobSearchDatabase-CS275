@@ -1,0 +1,80 @@
+<html>
+    <head>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+        <link type="text/css" rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <script>
+        
+        function AddNewUser(){
+
+            var studentID = $("#studentID").val();
+            var lastName = $("#lastName").val();
+            var firstName = $("#firstName").val();
+            var Password = $("#Password").val();
+            var Email = $("#Email").val();
+
+    
+            if (studentID == "" || lastName == "" || firstName =="" || Password=="" ||Email == "" ){
+                alert("Please fill all the information");
+                return;
+            }
+            
+            params = {
+                studentID: studentID,
+                lastName: lastName,
+                firstName : firstName,
+                Password : Password,
+                Email : Email
+            };
+
+            var URL = "http://localhost:8080/addNewUser"
+
+            $.ajax({
+                type: "POST",
+                url: URL,
+                data: params,
+                dataType: "html",
+                success : function(msg){
+                    console.log("Added");
+                },
+                error : function(jgXHR, textStatus, errorThrown){
+                    alert("Fail")
+                    $("#result").html("Error:" + textStatus + " " + errorThrown);
+                }
+            });
+
+        }
+        </script>
+
+        <style type="text/css">
+            table {
+                width: 100%;
+                border: 1px solid rgba(212, 23, 23, 0.158);
+            }
+            th, td {
+                width: 50%;
+                text-align: left;
+                vertical-align: top;
+                border: 1px solid rgba(201, 47, 47, 0.158);
+                border-collapse: collapse;
+            }
+        </style>
+    </head>
+    
+    <body>
+        <form>
+            <h2>Add User</h2>
+            <input type="text" id="studentID" placeholder="Enter Student ID"/>
+            <input type="text" id="lastName" placeholder="Enter Last Name"/>
+            <input type="text" id="firstName" placeholder="Enter First Name"/>
+            <input type="text" id="Email" placeholder="Enter Email"/>
+            <input type="password" id="Password" placeholder="Enter Password"/>
+            <br><br>
+            <input type="button" value="Add Users" onclick = "AddNewUser()">
+        </form>
+
+    <div id="result"></div>
+
+    </body>
+</html>

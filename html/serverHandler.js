@@ -110,5 +110,17 @@ app.post('/addCompany', function(req, res) {
 	res.send(result);
 });
 
+//import Add Users modules
+var addUserFront = require('./addUsersServer');
+var addU = new addUserFront();
 
+app.get('/user_rend', function(req, res){
+	res.send(addU.render());
+  
+});
+
+app.post('/addNewUser', function(req, res) {
+	var result = addU.addNewUser(req.body);
+	res.send(result);
+});
 	
