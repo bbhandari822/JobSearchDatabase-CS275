@@ -8,7 +8,6 @@
 	    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
 	    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 
-
         <script>
             var currentUser =false;
             var userRole = '';
@@ -41,6 +40,11 @@
                 });
             }
 
+            function getdate(){
+                var d = new Date();
+                document.getElementById("date").value = d.getMonth() + 1 + "/" + d.getDate() + "/" + d.getFullYear();
+            }
+
             function mainPage(){
 			    if(currentUser){
 				    var URL ="http://localhost:8080/loadMain";
@@ -50,7 +54,7 @@
                         dataType: "html",
                         success: function(msg) {
                             document.getElementById("main").innerHTML = msg;
-                            document.getElementById("headVal").innerHTML = '<h1>Home</h1>';
+                            document.getElementById("headVal").innerHTML = '<h1>Drexel Coop Experience</h1>';
                         }
                     });
 			    }else{
@@ -62,7 +66,7 @@
                         dataType: "html",
                         success: function(msg) {
                             document.getElementById("main").innerHTML = msg;
-                            document.getElementById("headVal").innerHTML = '<h1>Home</h1>';
+                            document.getElementById("headVal").innerHTML = '<h1>Drexel Coop Experience</h1>';
                         }
                     });
 			    }
@@ -141,7 +145,7 @@
         <script type="text/javascript"></script>
     </head>
 
-    <body>
+    <body onload="getdate()">
 
         <div data-role="page" id="pageone">
 
@@ -160,6 +164,11 @@
             </div>
 
             <div id="main" data-role="main" class="ui-content">
+                <div id = "dateText">Date: </div>
+                <div id = "date1">
+                    <input type="text" id = "date" name="date" readonly>
+                </div>
+
                 <center><h2 style="font-family: Arial, Helvetica, sans-serif;">Drexel Coop Experience</h2></center>
                 <div class="logo">
                     <center><img src="https://www.myccp.online/sites/default/files/images/Group/TransferOppertunities/drexel.png" alt="drexel logo" style="text-align: center; max-width: 60%; width: auto; height: auto;"></center>
@@ -178,7 +187,66 @@
             </div>
             
             <div data-role="footer" id="footer">
-                <h1>Drexel University</h1></div>		
+                <h1>Drexel University</h1>
+            </div>
+
+            <div id = "ambitionLoc">	
+                    <p><img src="http://drexel.edu/~/media/Images/ambitioncantwait/Logos/blue-solid.ashx?h=700&la=en&w=700&hash=7967E91DEB12A6B0FE8B238E455E2D4AD0D5E2FE" alt="ambition logo" height="20%" width="12%" align="right" vertical-align="middle">
+                    </p>
+            </div>
+
+            <div id = "underFooter">
+                <table id = "underFooterTable">
+                    <center><h4>A-Z Index | For Media | Careers Privacy &amp; Legal</h4></center>
+                </table>
+            </div>
+
+            <div id = "underFooter2">
+                    <center><h5>Drexel University, 3141 Chestnut Street, Philadelphia, PA 19104, 215.895.2000, &copy; 2018, All Rights Reserved</h5></center>
+            </div>
+
+            <style type="text/css">
+                #underFooter { 
+                    size: 6px;
+                    background-color: yellow;
+                    padding-top: 5px;
+                    padding-bottom: 2px;
+
+                }
+
+                #underFooterTable { 
+                     border: 1px solid black;
+                }
+                #underFooter2 { 
+                    background-color: yellow;
+                    padding-top: 4px;
+                    padding-bottom: 5px;
+                }
+                #main {
+                    background-color: rgb(206, 206, 221);
+                }
+
+                #date1{
+                    align-content: right;
+                    width: 10%;
+                    text-align: end;
+                    background-color: rgb(206, 206, 221);
+                    padding-left: 1250px;
+                }
+
+                #dateText{
+                    padding-bottom: 0px;
+                    align-self: center;
+                    padding-left: 1250px;
+                }
+
+                #ambitionLoc{
+                    padding-bottom: 40px;
+                    padding-left: 200px;
+                }
+
+            </style>
+            
         </div>
     </body>
 </html>
