@@ -45,21 +45,22 @@ addCompanyFront.prototype.addCompany = function(body){
         console.log ('Error during query processing');
         }
         else if(rows.length!=0){
-        return ('Company already exist')
+            console.log('Company already exist')
         }
         else{
-        con.query('INSERT INTO finalProject.COMPANY  (companyName, companyLocation, companyRating, companyReview, companyAddedDate) VALUES('+name+','+loc+','+rate+','+review+','+dateAdded+');',
-            function(err,rows,fields){
-            if (err){
-                console.log('Error during query processing');
-                console.log(err);
-                console.log ('Error during insertion');
-            }
-            else{
-                console.log ('Successfully Added');
-            }
-        });
-    }});
+            con.query('INSERT INTO finalProject.COMPANY  (companyName, companyLocation, companyRating, companyReview, companyAddedDate) VALUES('+name+','+loc+','+rate+','+review+','+dateAdded+');',
+                function(err,rows,fields){
+                if (err){
+                    console.log('Error during query processing');
+                    console.log(err);
+                    console.log ('Error during insertion');
+                }
+                else{
+                    console.log ('Successfully Added');
+                }
+            });
+        }
+    });
 }
 
 utils.inherits(addCompanyFront, EventEmitter);

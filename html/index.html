@@ -91,42 +91,26 @@
 
 
             function toRender(){
-                var URL = "http://localhost:8080/comp_rend"
-                $.ajax({
-                    type: "GET",
-                    url: URL,
-                    dataType: "html",
-                    success : function(msg){
-                        $("#main").html(msg);
-                        // var _main = document.getElementById('main');
-                        // eval(_main);
-                    },
-                    error : function(jgXHR, textStatus, errorThrown){
-                        alert("Fail")
-                        $("#result").html("Error:" + textStatus + " " + errorThrown);
-                    }
-                });
 
+                if(currentUser){
+                    var URL = "http://localhost:8080/comp_rend"
+                    $.ajax({
+                        type: "GET",
+                        url: URL,
+                        dataType: "html",
+                        success : function(msg){
+                            $("#main").html(msg);
+                        },
+                        error : function(jgXHR, textStatus, errorThrown){
+                            alert("Failed to load page !")
+                            $("#result").html("Error:" + textStatus + " " + errorThrown);
+                        }
+                    });
+                }else{
+                    alert("Please Login!")
+                } 
             }
 
-            function toRender(){
-                var URL = "http://localhost:8080/comp_rend"
-                $.ajax({
-                    type: "GET",
-                    url: URL,
-                    dataType: "html",
-                    success : function(msg){
-                        $("#main").html(msg);
-                        // var _main = document.getElementById('main');
-                        // eval(_main);
-                    },
-                    error : function(jgXHR, textStatus, errorThrown){
-                        alert("Fail")
-                        $("#result").html("Error:" + textStatus + " " + errorThrown);
-                    }
-                });
-
-            }
 
             function toRenderUser(){
                 var URL = "http://localhost:8080/user_rend"
@@ -165,7 +149,6 @@
                 <a onclick="mainPage()" data-rel="close" class="ui-alt-icon ui-btn ui-shadow ui-corner-all ui-icon-home ui-btn-icon-left">Home</a>
                 <a onclick="displayCompany()" data-rel="close" class="ui-alt-icon ui-btn ui-shadow ui-corner-all ui-icon-grid ui-btn-icon-left">Comapny Listing</a>
                 <a onclick="toRender()" data-rel="close" class="ui-alt-icon ui-btn ui-shadow ui-corner-all ui-icon-grid ui-btn-icon-left">Add Company</a>
-                <a onclick="toRenderUser()" data-rel="close" class="ui-alt-icon ui-btn ui-shadow ui-corner-all ui-icon-grid ui-btn-icon-left">Add Users</a>
                 <a onclick="jobLisiting()" data-rel="close" class="ui-alt-icon ui-btn ui-shadow ui-corner-all ui-icon-grid ui-btn-icon-left">Job Listing</a>
                 <a data-rel="close" class="ui-alt-icon ui-btn ui-shadow ui-corner-all ui-icon-delete ui-btn-icon-left">Close Menu</a>
             </div>
@@ -173,7 +156,7 @@
             <div data-role="header" id="header">
                 <a href="#panel">Menu</a>
                 <button onclick="window.location.href = 'http://localhost:8080' ">Sign Out</button>
-                <h1 id="headVal">Home</h1>
+                <h1 id="headVal">Co-op Experience</h1>
             </div>
 
             <div id="main" data-role="main" class="ui-content">
@@ -188,7 +171,9 @@
                     <input type="text" style="width: 100%; margin: 20px 0; display: inline-block; border: .8px solid rgb(133, 131, 131);" placeholder="Enter Email" id="uname" required>
                     <label style="font-family: Arial, Helvetica, sans-serif;"><b>Password</b></label>
                     <input type="password" style="width: 100%; margin: 20px 0; display: inline-block; border: .8px solid rgb(133, 131, 131);" placeholder="Enter Password" id="pwd" />
-                    <button type="submit" style="background-color: rgb(48, 66, 170); color: white; margin: 20px 0;cursor: pointer; width: 100%;" onclick="loginCheck()">Log In</button>  
+                    <button type="submit" style="background-color: rgb(48, 66, 170); color: white; margin: 20px 0;cursor: pointer; width: 45%; float: left"; onclick="loginCheck()">Log In</button> 
+                    <button type="submit" style="background-color: rgb(48, 66, 170); color: white; margin: 20px 0;cursor: pointer; width: 45%; float: right" onclick="toRenderUser()">Sign Up</button>  
+
                 </div>
             </div>
             

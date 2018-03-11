@@ -44,21 +44,22 @@ addUsers.prototype.addNewUser = function(body){
         console.log ('Error during query processing');
         }
         else if(rows.length!=0){
-        return ('User already exist')
+            console.log('User already exist')
         }
         else{
-        con.query('INSERT INTO finalProject.USER  (studentID, lastName, firstName, Password, Email) VALUES('+id+','+lastname+','+firstname+','+password+','+email+');',
-            function(err,rows,fields){
-            if (err){
-                console.log('Error during query processing');
-                console.log(err);
-                console.log ('Error during insertion');
-            }
-            else{
-                console.log ('Successfully Added');
-            }
-        });
-    }});
+            con.query('INSERT INTO finalProject.USER  (studentID, lastName, firstName, Password, Email) VALUES('+id+','+lastname+','+firstname+','+password+','+email+');',
+                function(err,rows,fields){
+                if (err){
+                    console.log('Error during query processing');
+                    console.log(err);
+                    console.log ('Error during insertion');
+                }
+                else{
+                    console.log('Successfully Added');
+                }
+            });
+        }
+    });
 }
 
 utils.inherits(addUsers, EventEmitter);
