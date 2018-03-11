@@ -1,4 +1,4 @@
-
+//modules 
 var fs = require('fs');//use file sync to read
 var EventEmitter = require('events').EventEmitter;
 var utils = require('util');
@@ -11,6 +11,7 @@ app.use(bodyParser.urlencoded({extended:false}));
 app.use(bodyParser.json());
 var mysql = require('mysql');
 
+//connecting to SQL
 var con = mysql.createConnection({
 	host: 'localhost',
 	user: 'binod',
@@ -21,12 +22,12 @@ var con = mysql.createConnection({
 function addCompanyFront(){
     EventEmitter.call(this);
 }
-
+//pulls the code from addCompanyFront file
 addCompanyFront.prototype.render = function(){
     var data = fs.readFileSync('./addCompanyFront.html', 'utf8');
     return data;
   }
-
+//set the elements of the Company class from the fs. request
 addCompanyFront.prototype.addCompany = function(body){
 
     //escape to prevent injection
@@ -36,7 +37,9 @@ addCompanyFront.prototype.addCompany = function(body){
     var rate = mysql.escape(body.companyRating);
     var review = mysql.escape(body.companyReview);
     var dateAdded = mysql.escape(body.companyAddedDate);
-
+	
+	
+//add the new company to the database
     con.query('SELECT companyID FROM finalProject.COMPANY WHERE companyId='+id+';',
     
     function(err,rows,fields){
@@ -64,4 +67,5 @@ addCompanyFront.prototype.addCompany = function(body){
 }
 
 utils.inherits(addCompanyFront, EventEmitter);
+//sends database to the client side to be placed in the body
 module.exports = addCompanyFront
