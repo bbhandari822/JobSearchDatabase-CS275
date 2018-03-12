@@ -1,11 +1,12 @@
 <html>
-    <head>
+    <head> <!-- Bootstrapping -->
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
         <link type="text/css" rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.5/jquery.mobile.min.css">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         
         <script>
         
+            //class creation for the company 
         function AddNewCompany(){
             var companyName = $("#companyName").val();
             var companyLocation = $("#companyLocation").val();
@@ -13,6 +14,7 @@
             var companyReview = $("#companyReview").val();
             var companyAddedDate = $("#companyAddedDate").val();
 
+            //if-case when one field is empty
             if (companyName == "" || companyLocation == "" || companyRating =="" || companyReview=="" ||companyAddedDate == "" ){
                 alert("Please fill all the information");
                 return;
@@ -28,6 +30,7 @@
 
             var URL = "http://localhost:8080/addCompany"
 
+             //AJAX request
             $.ajax({
                 type: "POST",
                 url: URL,
@@ -44,7 +47,7 @@
 
         }
         </script>
-        
+        <!-- Style of the page-->
         <style type="text/css">
             #tableInfo{
                 background-color:rgb(233, 229, 229);
@@ -77,6 +80,7 @@
     </head>
     
     <body>
+        <!-- table creation -->
         <form>
             <center><img src="https://www.myccp.online/sites/default/files/images/Group/TransferOppertunities/drexel.png" alt="drexel logo" style="text-align: center; max-width: 60%; width: auto; height: auto;"></center>
             <tr>

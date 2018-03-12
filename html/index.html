@@ -9,12 +9,13 @@
 	    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 
         <script>
+	//Creates user accounts
             var currentUser =false;
             var userRole = '';
             var userId = '';
             
             function loginCheck(){
-
+		//sets parameters an account
                 var params ={};
                 var Email = document.getElementById("uname").value;
                 var Password = document.getElementById("pwd").value;
@@ -44,7 +45,7 @@
                 var d = new Date();
                 document.getElementById("date").value = d.getMonth() + 1 + "/" + d.getDate() + "/" + d.getFullYear();
             }
-
+	//accesses the index.sql function loadMain
             function mainPage(){
 			    if(currentUser){
 				    var URL ="http://localhost:8080/loadMain";
@@ -57,6 +58,7 @@
                             document.getElementById("headVal").innerHTML = '<h2>Drexel Coop Experience</h2>';
                         }
                     });
+				    //allows to login
 			    }else{
                     alert("Please Login!");
                     var URL ="http://localhost:8080";
@@ -72,7 +74,7 @@
 			    }
 	        }
 
-            function displayCompany(){//for display table
+            function displayCompany(){//to display table
 			    if(currentUser){
                     var URL ="http://localhost:8080/displayComapany";
                     params = {};
@@ -93,7 +95,7 @@
                 }
             }
 
-
+		//renders the file
             function toRender(){
 
                 if(currentUser){
@@ -115,7 +117,7 @@
                 } 
             }
 
-
+		//Displays the information of the user to the client side. 
             function toRenderUser(){
                 var URL = "http://localhost:8080/user_rend"
                 $.ajax({

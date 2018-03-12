@@ -1,4 +1,4 @@
-
+//modules
 var http = require('http');
 var url = require('url');
 var fs = require("fs");
@@ -14,7 +14,7 @@ var con = mysql.createConnection({
 	password: 'password',
 	database: 'finalProject'
 });
-
+//node Notification
 con.connect(function(err) {
 	if (err) {
 		console.log("Error connecting to database");
@@ -41,7 +41,7 @@ app.get('/', function(req, res){
 		res.end();	
 	});	
 });
-
+//loads instructions on opening the page.
 app.get('/loadMain', function(req, res){
 	var html = '';
 	html += '<center><h2 style=\"font-family: Arial,sans-serif Helvetica;\">Welcome to the Drexel Coop App!</h2></center>';
@@ -50,7 +50,7 @@ app.get('/loadMain', function(req, res){
 
 });
 
-
+//function to check input 
 app.get('/login', function(req, res) {
 	var userEmail = req.query.email;
 	var userPassword = req.query.password;
@@ -104,7 +104,7 @@ app.get('/comp_rend', function(req, res){
 	res.send(addC.render());
   
 });
-
+//add to html body
 app.post('/addCompany', function(req, res) {
 	var result = addC.addCompany(req.body);
 	res.send(result);
@@ -113,12 +113,12 @@ app.post('/addCompany', function(req, res) {
 //import Add Users modules
 var addUserFront = require('./addUsersServer');
 var addU = new addUserFront();
-
+//sets user information
 app.get('/user_rend', function(req, res){
 	res.send(addU.render());
   
 });
-
+//sends new user data to database 
 app.post('/addNewUser', function(req, res) {
 	var result = addU.addNewUser(req.body);
 	res.send(result);
