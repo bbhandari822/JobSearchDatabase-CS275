@@ -67,5 +67,4 @@ addCompanyFront.prototype.addCompany = function(body){
 }
 
 utils.inherits(addCompanyFront, EventEmitter);
-//sends database to the client side to be placed in the body
 module.exports = addCompanyFront

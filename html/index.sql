@@ -68,5 +68,33 @@ experience ever','2017-05-12');
 UNLOCK TABLES;
 
 
+DROP TABLE IF EXISTS `INTERVIEW`;
+/*!40101 SET character_set_client = utf8 */;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+CREATE TABLE `INTERVIEW` (
+  `index` int NOT NULL AUTO_INCREMENT,
+  `companyID` int(20) DEFAULT NULL,
+  `studentID` varchar(20) DEFAULT NULL,
+  `companyName` varchar(20) DEFAULT NULL,
+  `userName` varchar(20) DEFAULT NULL,
+  `interviewType` varchar(256) DEFAULT NULL,
+  `levelOfDifficulty` varchar(20) DEFAULT NULL,
+  `sampleInterviewQuestions` varchar(256) DEFAULT NULL,
+  `companyInterviewDate` date DEFAULT NULL,
+  PRIMARY KEY (`index`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
--- Dump completed on 2018-03-04 
+--
+-- table `INTERVIEW`: dumping data for the table
+--
+
+LOCK TABLES `INTERVIEW` WRITE;
+/*!40000 ALTER TABLE `INTERVIEW` DISABLE KEYS */;
+INSERT INTO `INTERVIEW` VALUES (1,2,14169635,'SIG','chris','Technical and Behaviorals', 'Medium', 'What is hashmap?','2017-11-11');
+/*!40000 ALTER TABLE `INTERVIEW` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+
+-- Dump completed on 2018-03-12 
