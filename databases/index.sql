@@ -34,17 +34,67 @@ CREATE TABLE `USER` (
 
 LOCK TABLES `USER` WRITE;
 /*!40000 ALTER TABLE `USER` DISABLE KEYS */;
-INSERT INTO `USER` VALUES ('14169635','Bhandari','Binod','password','bb822@drexel.edu');
+INSERT INTO `USER` VALUES ('14169635','Bhandari','Binod','password','bb822@drexel.edu'), ('14169634','Palvec','Chris','123','chris');
 /*!40000 ALTER TABLE `USER` ENABLE KEYS */;
 UNLOCK TABLES;
 
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
-/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 
--- Dump completed on 2018-03-04 
+DROP TABLE IF EXISTS `COMPANY`;
+/*!40101 SET character_set_client = utf8 */;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+CREATE TABLE `COMPANY` (
+  `companyID` int NOT NULL AUTO_INCREMENT,
+  `companyName` varchar(20) DEFAULT NULL,
+  `companyLocation` varchar(20) DEFAULT NULL,
+  `companyRating` decimal(4,1) DEFAULT NULL,
+  `companyReview` varchar(256) DEFAULT NULL,
+  `companyAddedDate` date DEFAULT NULL,
+  PRIMARY KEY (`companyID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- table `COMPANY`: dumping data for the table
+--
+
+LOCK TABLES `COMPANY` WRITE;
+/*!40000 ALTER TABLE `COMPANY` DISABLE KEYS */;
+INSERT INTO `COMPANY` VALUES (1,'Google','California',4.3,'Google was really nice working at Google. The company environment
+was really good. Everyone was helpful.','2017-05-18' ),(2,'SIG','Philadelphia', 3.2, 'I worked mainly on legacy code which was not 
+a fun part. But I was able to learn alot and implement my knowledge from Drexel in real life implementation','2017-09-13'), (3, 'Macquarie',
+'Philadelphia', 4.1, 'Macquaire was the best!','2018-01-21'),(4,'XYZ','New York',1.0,'I hate it, do not even try to go there, Worst
+experience ever','2017-05-12');
+/*!40000 ALTER TABLE `COMPANY` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+DROP TABLE IF EXISTS `INTERVIEW`;
+/*!40101 SET character_set_client = utf8 */;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+CREATE TABLE `INTERVIEW` (
+  `index` int NOT NULL AUTO_INCREMENT,
+  `companyID` int(20) DEFAULT NULL,
+  `studentID` varchar(20) DEFAULT NULL,
+  `companyName` varchar(20) DEFAULT NULL,
+  `userName` varchar(20) DEFAULT NULL,
+  `interviewType` varchar(256) DEFAULT NULL,
+  `levelOfDifficulty` varchar(20) DEFAULT NULL,
+  `sampleInterviewQuestions` varchar(256) DEFAULT NULL,
+  `companyInterviewDate` date DEFAULT NULL,
+  PRIMARY KEY (`index`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- table `INTERVIEW`: dumping data for the table
+--
+
+LOCK TABLES `INTERVIEW` WRITE;
+/*!40000 ALTER TABLE `INTERVIEW` DISABLE KEYS */;
+INSERT INTO `INTERVIEW` VALUES (1,2,14169635,'SIG','chris','Technical and Behaviorals', 'Medium', 'What is hashmap?','2017-11-11');
+/*!40000 ALTER TABLE `INTERVIEW` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+
+-- Dump completed on 2018-03-12 
