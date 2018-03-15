@@ -37,13 +37,14 @@
                 dataType: "html",
                 success : function(msg){
                     console.log("Added");
+                    alert("User Added!");
                 },
                 error : function(jgXHR, textStatus, errorThrown){
                     alert("Fail")
                     $("#result").html("Error:" + textStatus + " " + errorThrown);
                 }
             });
-
+            
         }
         </script>
 
@@ -123,7 +124,9 @@
             <br><br>
             <tr>
                 <center>
-                <input type="button" value = "Add User" height= "50%" style=" margin: 20px;cursor: pointer; width: 30%;" onclick="AddNewUser()"> 
+                <input type="button" value = "Add User" height= "50%" style=" margin: 20px;cursor: pointer; width: 30%;" onclick="AddNewUser()">
+                <input type="button" value = "Go to LogIn Page" height= "50%" style=" margin: 20px;cursor: pointer; width: 30%;" onclick="window.location.href = 'http://localhost:8080' ">
+                
                 </center>
             </tr>
         </form>
