@@ -37,7 +37,10 @@
                 data: params,
                 dataType: "html",
                 success : function(msg){
-                    alert("User Added!");
+                    $('input[type=text]').each(function() {
+                        $(this).val('');
+                    });
+                    alert("Company Added Sucessfully!");
                     console.log("Added");
                 },
                 error : function(jgXHR, textStatus, errorThrown){

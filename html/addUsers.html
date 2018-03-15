@@ -36,8 +36,11 @@
                 data: params,
                 dataType: "html",
                 success : function(msg){
+                    $('input[type=text], input[type=password]').each(function() {
+                        $(this).val('');
+                    });
                     console.log("Added");
-                    alert("User Added!");
+                    alert("User Added Sucessfully!");
                 },
                 error : function(jgXHR, textStatus, errorThrown){
                     alert("Fail")

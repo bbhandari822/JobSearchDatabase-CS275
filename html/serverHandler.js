@@ -60,7 +60,10 @@ app.get('/login', function(req, res) {
 				res.send("Incorrect Password/Email");
 			}
 			else{
-				if(rows[0].Password == userPassword){
+				if(rows.length==0){
+					res.send("Incorrect Password/Email");
+				}
+				else if(rows[0].Password == userPassword){
 					console.log("correct info");
 					var role = rows[0].RoleID;
 					res.send(role);

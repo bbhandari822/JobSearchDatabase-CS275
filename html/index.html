@@ -44,6 +44,8 @@
             function getdate(){
                 var d = new Date();
                 document.getElementById("date").value = d.getMonth() + 1 + "/" + d.getDate() + "/" + d.getFullYear();
+                $(".ui-btn-left").hide();
+                $(".ui-btn-right").hide();
             }
 	//accesses the index.sql function loadMain
             function mainPage(){
@@ -56,6 +58,9 @@
                         success: function(msg) {
                             document.getElementById("main").innerHTML = msg;
                             document.getElementById("headVal").innerHTML = '<h2>Drexel Coop Experience</h2>';
+                            $(".ui-btn-left").show();
+                            $(".ui-btn-right").show();
+
                         }
                     });
 				    //allows to login
