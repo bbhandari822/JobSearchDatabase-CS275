@@ -126,4 +126,18 @@ app.post('/addNewUser', function(req, res) {
 	var result = addU.addNewUser(req.body);
 	res.send(result);
 });
+
+//import Add Users modules
+var addInterviewFront = require('./addInterviewServer');
+var addInterview = new addInterviewFront();
+//sets user information
+app.get('/interview_rend', function(req, res){
+	res.send(addInterview.render());
+  
+});
+//sends new user data to database 
+app.post('/addNewInterview', function(req, res) {
+	var result = addInterview.addNewInterview(req.body);
+	res.send(result);
+});
 	

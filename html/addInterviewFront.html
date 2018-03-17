@@ -7,28 +7,30 @@
         <script>
         
             //class creation for the company 
-        function AddNewCompany(){
+        function AddNewInterview(){
             var companyName = $("#companyName").val();
-            var companyLocation = $("#companyLocation").val();
-            var companyRating = $("#companyRating").val();
-            var companyReview = $("#companyReview").val();
-            var companyAddedDate = $("#companyAddedDate").val();
+            var interviewType = $("#interviewType").val();
+            var levelOfDifficulty = $("#levelOfDifficulty").val();
+            var sampleInterviewQuestions = $("#sampleInterviewQuestions").val();
+            var companyInterviewDate = $("#companyInterviewDate").val();
+            var userEmail = localStorage.getItem("UserEmail");
 
             //if-case when one field is empty
-            if (companyName == "" || companyLocation == "" || companyRating =="" || companyReview=="" ||companyAddedDate == "" ){
+            if (companyName == "" || interviewType == "" || levelOfDifficulty =="" || sampleInterviewQuestions=="" ||companyInterviewDate == "" ){
                 alert("Please fill all the information");
                 return;
             }
             
             params = {
                 companyName: companyName,
-                companyLocation: companyLocation,
-                companyRating : companyRating,
-                companyReview : companyReview,
-                companyAddedDate : companyAddedDate,
+                interviewType: interviewType,
+                levelOfDifficulty : levelOfDifficulty,
+                sampleInterviewQuestions : sampleInterviewQuestions,
+                companyInterviewDate : companyInterviewDate,
+                userEmail: userEmail
             };
 
-            var URL = "http://localhost:8080/addCompany"
+            var URL = "http://localhost:8080/addNewInterview"
 
              //AJAX request
             $.ajax({
@@ -40,8 +42,8 @@
                     $('input[type=text]').each(function() {
                         $(this).val('');
                     });
-                    alert("Company Added Sucessfully!");
-                    console.log("Added");
+                    alert("Interview Data Added Sucessfully!");
+                    console.log("Interview Added");
                 },
                 error : function(jgXHR, textStatus, errorThrown){
                     alert("Fail")
@@ -90,7 +92,7 @@
             <tr>
                 <td>
                     <fieldset>
-                        <legend><h2>Company Information</h2></legend>
+                        <legend><h2>Interview DataBase</h2></legend>
                         <table id = "tableInfo">
                             <tr>
                                 <td height="40"> Company Name</td>
@@ -99,27 +101,27 @@
                                 </td>
                             </tr>
                             <tr>
-                                <td height="40">Company Location</td>
+                                <td height="40">Company Interview Type</td>
                                 <td>
-                                    <input type="text" id="companyLocation" placeholder="Enter Company Location" style = "width: 700px; height: 30px;" required>
+                                    <input type="text" id="interviewType" placeholder="Enter Interview Type" style = "width: 700px; height: 30px;" required>
                                 </td>
                             </tr>
                             <tr>
-                                <td height="40"></tdheight>Comapny Rating</td>
+                                <td height="40"></tdheight>Comapny Level of Difficulty</td>
                                 <td>
-                                    <input type="text" id="companyRating" placeholder="Enter Comapny Rating" style = "width: 700px; height: 30px;" required>
+                                    <input type="text" id="levelOfDifficulty" placeholder="Enter Level of Difficulty" style = "width: 700px; height: 30px;" required>
                                 </td>
                             </tr>
                             <tr>
-                                <td height="40">Company Reviews</td>
+                                <td height="40">Company Sample Interview Questions</td>
                                 <td>
-                                    <input type="text" id="companyReview" placeholder="Enter Company Reviews" style = "width: 700px; height: 30px;" required>
+                                    <input type="text" id="sampleInterviewQuestions" placeholder="Enter Sample Interview Questions" style = "width: 700px; height: 30px;" required>
                                 </td>
                             </tr>
                             <tr>
-                                <td height="40"> Company Added Date</td>
+                                <td height="40"> Company Interviewed Date</td>
                                 <td>
-                                    <input type="text" id="companyAddedDate" placeholder="Date: YYYY-MM-DD" style = "width: 700px; height: 30px;" required>
+                                    <input type="text" id="companyInterviewDate" placeholder="Date: YYYY-MM-DD" style = "width: 700px; height: 30px;" required>
                                 </td>
                             </tr>
                         </table>
@@ -129,9 +131,10 @@
             <br><br>
             <tr>
                 <center>
-                <input type="button" value = "Add Company"height= "50%" style=" margin: 20px;cursor: pointer; width: 30%;" onclick="AddNewCompany()">
+                <input type="button" value = "Add Interview Questions"height= "50%" style=" margin: 20px;cursor: pointer; width: 30%;" onclick="AddNewInterview()">
                 </center>
             </tr>
+
         </form>
         <div id="result"></div>
     </body>

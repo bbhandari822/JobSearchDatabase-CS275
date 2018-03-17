@@ -33,8 +33,10 @@
                             alert(info);
 						    currentUser=Email;
                         }else{
+                            var NewStorage = window.localStorage;
                             currentUser = Email;
                             userRole = info;
+                            NewStorage.setItem('UserEmail', Email);
                             mainPage();
                         };
                     }
@@ -140,6 +142,23 @@
 
             }
 
+            function toRenderInterview(){
+                var URL = "http://localhost:8080/interview_rend"
+                $.ajax({
+                    type: "GET",
+                    url: URL,
+                    dataType: "html",
+                    success : function(msg){
+                        $("#main").html(msg);
+                    },
+                    error : function(jgXHR, textStatus, errorThrown){
+                        alert("Fail")
+                        $("#result").html("Error:" + textStatus + " " + errorThrown);
+                    }
+                });
+
+            }
+
         </script>
 
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -160,7 +179,7 @@
                 <a onclick="mainPage()" data-rel="close" class="ui-alt-icon ui-btn ui-shadow ui-corner-all ui-icon-home ui-btn-icon-left">Home</a>
                 <a onclick="displayCompany()" data-rel="close" class="ui-alt-icon ui-btn ui-shadow ui-corner-all ui-icon-grid ui-btn-icon-left">Comapny Listing</a>
                 <a onclick="toRender()" data-rel="close" class="ui-alt-icon ui-btn ui-shadow ui-corner-all ui-icon-grid ui-btn-icon-left">Add Company</a>
-                <a onclick="jobLisiting()" data-rel="close" class="ui-alt-icon ui-btn ui-shadow ui-corner-all ui-icon-grid ui-btn-icon-left">Job Listing</a>
+                <a onclick="toRenderInterview()" data-rel="close" class="ui-alt-icon ui-btn ui-shadow ui-corner-all ui-icon-grid ui-btn-icon-left">Job Listing</a>
                 <a data-rel="close" class="ui-alt-icon ui-btn ui-shadow ui-corner-all ui-icon-delete ui-btn-icon-left">Close Menu</a>
             </div>
 
