@@ -89,7 +89,7 @@ CREATE TABLE `INTERVIEW` (
 
 LOCK TABLES `INTERVIEW` WRITE;
 /*!40000 ALTER TABLE `INTERVIEW` DISABLE KEYS */;
-INSERT INTO `INTERVIEW` VALUES (1,'SIG','chris','Technical and Behaviorals', 'Medium', 'What is hashmap?','2017-11-11');
+INSERT INTO `INTERVIEW` VALUES (1,'SIG','chris','Technical and Behaviorals', 'Medium', 'What is hashmap?','2017-11-11'),(2,'Google','bb822@drexel.edu','Technical','Hard','Implement the binary search tree and see if the two element is sum to target value','2017-09-21');
 /*!40000 ALTER TABLE `INTERVIEW` ENABLE KEYS */;
 UNLOCK TABLES;
 

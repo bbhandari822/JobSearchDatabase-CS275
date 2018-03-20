@@ -44,10 +44,13 @@ app.get('/', function(req, res){
 //loads instructions on opening the page.
 app.get('/loadMain', function(req, res){
 	var html = '';
+	
 	html += '<center><h2 style=\"font-family: Arial,sans-serif Helvetica;\">Welcome to the Drexel Coop App!</h2></center>';
 	html += '<center><h2 style=\"font-family: Arial,sans-serif Helvetica;\">To access content, click the <b>Menu</b> button in the top left corner, which will open a menu.</p></center>';
+	html += '<center><h2 style=\"font-family: Arial,sans-serif Helvetica;\">To sign out content, click the <b>SignOut</b> button in the top right corner</p></center>';
+	html += '<center><h2 style=\"font-family: Arial,sans-serif Helvetica;\">To check out the latest information about drexel, Click one of the icon under Social Media Link</p></center>';
+	html += '<center><h2 style=\"font-family: Arial,sans-serif Helvetica;\">Drexel Address and Phone Number is listed at bottom.</h2></center>';
 	res.send(html);
-
 });
 
 //function to check input 
@@ -141,3 +144,10 @@ app.post('/addNewInterview', function(req, res) {
 	res.send(result);
 });
 	
+app.get('/displayInterviews', function(req, res){
+	console.log("hereserverhandler");
+	addInterview.once('DONEE', function(msg){
+		res.send(msg);
+	});
+	addInterview.displayInterviewss();
+});

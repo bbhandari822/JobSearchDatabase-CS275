@@ -19,8 +19,9 @@ var con = mysql.createConnection({
 	database: 'finalProject'
 });
 
+utils.inherits(addInterviewFront, EventEmitter);
+
 function addInterviewFront(){
-    EventEmitter.call(this);
 }
 //pulls the code from addInterviewFront file
 addInterviewFront.prototype.render = function(){
@@ -68,5 +69,26 @@ addInterviewFront.prototype.addNewInterview= function(body){
     });
 }
 
-utils.inherits(addInterviewFront, EventEmitter);
-module.exports = addInterviewFront
+addInterviewFront.prototype.displayInterviewss = function(){
+
+    var self = this;
+    con.query('select companyName, interviewType, levelOfDifficulty, sampleInterviewQuestions, companyInterviewDate from INTERVIEW;',
+    function(err,rows,fields) {
+        if (err){
+            console.log(err);
+            res.send("error:please reload");
+        }
+        else{
+            var str = "<table border=\"1\" style=\"font-family: Helvetica, Arial, sans-serif; border: 1px solid #000; border-collapse: collapse; : 100%; width: auto; padding-top: 12px; text-align: center; margin-bottom: 14px;\"><tr><td><b>Company Name</b></td><td><b>Interview Type</b></td><td><b>Interview Difficulty</b></td><td><b>Interview Questions</b></td><td><b>Interview Date</b></td></tr>"
+            for (var i = 0; i < rows.length; i++) {
+                str = str + "<tr><td>" + rows[i].companyName + "</td><td>" + rows[i].interviewType + "</td><td>" + rows[i].levelOfDifficulty +  "</td><td>" + rows[i].sampleInterviewQuestions + "</td><td>" + rows[i].companyInterviewDate +  "</td></tr>";
+            };
+            str = str + "</table>";
+            self.emit("DONEE", str);
+        };
+    });
+    
+}
+
+
+module.exports = addInterviewFront;

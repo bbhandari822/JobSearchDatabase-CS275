@@ -6,6 +6,26 @@
         
         <script>
         
+        function displayInterview(){//to display table
+            console.log("here0");
+            var URL ="http://localhost:8080/displayInterviews";
+            params = {};
+            $.ajax({
+                type: "GET",
+                url: URL,
+                dataType: "html",
+                data: params,
+                success: function(msg){
+                    console.log(msg);
+                    document.getElementById("result").innerHTML = msg;
+                },
+                error : function(jgXHR, textStatus, errorThrown){
+                    console.log("here2");
+                    $("#result").html("Error:" + textStatus + " " + errorThrown);
+                }
+            });
+        }
+
             //class creation for the company 
         function AddNewInterview(){
             var companyName = $("#companyName").val();
@@ -61,13 +81,6 @@
                 padding-left:6%;
                 size: 90%
             }
-            th, td {
-                width: 40%;
-                text-align: left;
-                vertical-align: top;
-                border: 1px solid rgba(201, 47, 47, 0.158);
-                border-collapse: collapse;
-            }
             form{
                 width:80%;
                 margin-left:10%;
@@ -80,6 +93,19 @@
                 font: 15%;
                 align-content: flex-end;
                 background-color: rgb(221, 218, 211);
+            }
+
+            table {
+                width: 100%;
+                border: 1px solid #000;
+            }
+
+            th, td {
+                width: 25%;
+                text-align: left;
+                vertical-align: top;
+                border: 1px solid #000;
+                border-collapse: collapse;
             }
 
         </style>
@@ -132,6 +158,7 @@
             <tr>
                 <center>
                 <input type="button" value = "Add Interview Questions"height= "50%" style=" margin: 20px;cursor: pointer; width: 30%;" onclick="AddNewInterview()">
+                <input type="button" value = "Display Interview"height= "50%" style=" margin: 20px;cursor: pointer; width: 30%;" onclick="displayInterview()">
                 </center>
             </tr>
 
