@@ -72,16 +72,14 @@ DROP TABLE IF EXISTS `INTERVIEW`;
 /*!40101 SET character_set_client = utf8 */;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 CREATE TABLE `INTERVIEW` (
-  `index` int NOT NULL AUTO_INCREMENT,
-  `companyID` int(20) DEFAULT NULL,
-  `studentID` varchar(20) DEFAULT NULL,
+  `interviewID` int NOT NULL AUTO_INCREMENT,
   `companyName` varchar(20) DEFAULT NULL,
   `userName` varchar(20) DEFAULT NULL,
   `interviewType` varchar(256) DEFAULT NULL,
   `levelOfDifficulty` varchar(20) DEFAULT NULL,
   `sampleInterviewQuestions` varchar(256) DEFAULT NULL,
   `companyInterviewDate` date DEFAULT NULL,
-  PRIMARY KEY (`index`)
+  PRIMARY KEY (`interviewID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -91,10 +89,10 @@ CREATE TABLE `INTERVIEW` (
 
 LOCK TABLES `INTERVIEW` WRITE;
 /*!40000 ALTER TABLE `INTERVIEW` DISABLE KEYS */;
-INSERT INTO `INTERVIEW` VALUES (1,2,14169635,'SIG','chris','Technical and Behaviorals', 'Medium', 'What is hashmap?','2017-11-11');
+INSERT INTO `INTERVIEW` VALUES (1,'SIG','chris','Technical and Behaviorals', 'Medium', 'What is hashmap?','2017-11-11'),(2,'Google','bb822@drexel.edu','Technical','Hard','Implement the binary search tree and see if the two element is sum to target value','2017-09-21');
 /*!40000 ALTER TABLE `INTERVIEW` ENABLE KEYS */;
 UNLOCK TABLES;
 
 
 
--- Dump completed on 2018-03-12 
+-- Dump completed on 2018-03-20
