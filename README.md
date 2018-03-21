@@ -9,6 +9,8 @@ webpage/server:
 sql:
 Create finalProject Database: mysql -u 'USERNAME' -p finalProject < index.sql
 
+https://docs.npmjs.com/getting-started/installing-node
+
 
 
 
